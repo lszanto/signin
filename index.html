@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8" >
+    <title>Learnin some react.</title>
+    
+    <!-- React -->
+    <script src="http://fb.me/react-with-addons-0.13.1.min.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.13.1.js"></script>
+    
+    <!-- React Router -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/0.13.2/ReactRouter.min.js" ></script>
+    
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js" ></script>
+    
+    <!-- Reactfire -->
+    <script src="scripts/reactfire.min.js" ></script>
+    
+    <!-- The actual app -->
+    <script type="text/jsx" src="scripts/app.js" ></script>
+</head>
+    
+<body>
+
+    <div id="app" ></div>
+    
+    <script type="text/jsx" >
+        
+    var Router = ReactRouter;
+        
+    var { Route, DefaultRoute, RouteHandler, Link } = Router;
+    
+    var App = React.createClass({
+        render: function() {
+            return (
+                <div>
+                    <RouteHandler />
+                </div>
+            );
+        }
+    });
+        
+    var Home = React.createClass({
+        render: function() {
+            return (
+                <h1>Home</h1>  
+            );
+        }
+    });
+        
+    var Dashboard = React.createClass({
+        render: function() {
+            return (
+                <h1>Dashboard</h1>  
+            );
+        }
+    });
+        
+    var routes = (
+        <Route handler={App} >
+            <DefaultRoute handler={Home} />
+            <Route name="dashboard" handler={Dashboard} />
+        </Route>
+    );
+    
+    Router.run(routes, function(Handler) {
+        React.render(<Handler />, document.getElementById('app'));
+    });
+        
+    </script>
+    
+</body>
+</html>
