@@ -5,7 +5,7 @@
     <title>Learnin some react.</title>
     
     <!-- React -->
-    <script src="http://fb.me/react-with-addons-0.13.1.min.js"></script>
+    <script src="http://fb.me/react-with-addons-0.13.1.js"></script>
     <script src="http://fb.me/JSXTransformer-0.13.1.js"></script>
     
     <!-- React Router -->
@@ -17,6 +17,9 @@
     <!-- Reactfire -->
     <script src="scripts/reactfire.min.js" ></script>
     
+    <!-- Constants -->
+    <script type="text/jsx" src="scripts/constants.js" ></script>
+    
     <!-- The actual app -->
     <script type="text/jsx" src="scripts/app.js" ></script>
 </head>
@@ -25,7 +28,7 @@
 
     <div id="app" ></div>
     
-    <script type="text/jsx" >
+    <div style="display: none" type="text/jsx" >
         
     var Router = ReactRouter;
         
@@ -44,7 +47,7 @@
     var Home = React.createClass({
         render: function() {
             return (
-                <h1>Home</h1>  
+                <h1>Home</h1>
             );
         }
     });
@@ -52,7 +55,7 @@
     var Dashboard = React.createClass({
         render: function() {
             return (
-                <h1>Dashboard</h1>  
+                <h1>Dashboard</h1>
             );
         }
     });
@@ -68,7 +71,7 @@
         React.render(<Handler />, document.getElementById('app'));
     });
         
-    </script>
+    </div>
     
 </body>
 </html>

@@ -1,9 +1,7 @@
 /** @jsx React.DOM */
 
 var KidsList = React.createClass({
-    mixins: [ReactFireMixin],
-    
-    firebaseURL: 'https://chicagapp.firebaseio.com/kids/',
+    mixins: [ReactFireMixin, CONSTANTS],
 
     getInitialState: function() {
         return {
@@ -75,22 +73,21 @@ var KidComponent = React.createClass({
     },
 
     render: function() {
-        var years = [6, 7, 8, 9, 10, 11, 12].map(function(o, n) {
-            return <option value={o} selected={o == this.props.details.year} >{o}</option>;
-        }.bind(this));
-        
-        var genders = [ 'boy', 'girl' ].map(function(o, n) {
-            return <option value={o} selected={o == this.props.details.gender} >{o}</option>;
-        }.bind(this));
-        
         return (
             <div className="kidComponent" >
                 <input type='text' name='name' className='name' placeholder='Full Name' onChange={this.changeProp} value={this.props.details.name} />
-                <select name='gender' onChange={this.changeProp} >
-                    {genders}
+                <select name='gender' onChange={this.changeProp} defaultValue={this.props.details.gender} >
+                    <option value='boy' >Boy</option>
+                    <option value='girl' >Girl</option>
                 </select>
-                <select name='year' onChange={this.changeProp} >
-                    {years}
+                <select name='year' onChange={this.changeProp} defaultValue={this.props.details.year} >
+                    <option value='6' >6</option>
+                    <option value='7' >7</option>
+                    <option value='8' >8</option>
+                    <option value='9' >9</option>
+                    <option value='10' >10</option>
+                    <option value='11' >11</option>
+                    <option value='12' >12</option>
                 </select>
                 <input type='text' name='school' className='school' placeholder='School' onChange={this.changeProp} value={this.props.details.school} />
                 <input type="text" name="parent" className="parent" placeholder="Parent" value={this.props.details.parent} onChange={this.changeProp} />
@@ -133,22 +130,21 @@ var AddKid = React.createClass({
     },
 
     render: function() {
-        var years = [6, 7, 8, 9, 10, 11, 12].map(function(o, n) {
-            return <option value={o} selected={o == this.state.year} >{o}</option>;
-        }.bind(this));
-        
-        var genders = [ 'boy', 'girl' ].map(function(o, n) {
-            return <option value={o} selected={o == this.state.gender} >{o}</option>;
-        }.bind(this));
-        
         return (
-            <div class="addKid" >
+            <div className="addKid" >
                 <input type="text" name="name" className="name" placeholder="Full Name" value={this.state.name} onChange={this.changeProp} />
-                <select name='gender' onChange={this.changeProp} >
-                    {genders}
+                <select name='gender' onChange={this.changeProp} defaultValue={this.state.gender} >
+                    <option value='boy' >Boy</option>
+                    <option value='girl' >Girl</option>
                 </select>
-                <select name='year' onChange={this.changeProp} >
-                    {years}
+                <select name='year' onChange={this.changeProp} defaultValue={this.state.year} >
+                    <option value='6' >6</option>
+                    <option value='7' >7</option>
+                    <option value='8' >8</option>
+                    <option value='9' >9</option>
+                    <option value='10' >10</option>
+                    <option value='11' >11</option>
+                    <option value='12' >12</option>
                 </select>
                 <input type="text" name="school" className="school" placeholder="School" value={this.state.school} onChange={this.changeProp} />
                 <input type="text" name="parent" className="parent" placeholder="Parent" value={this.state.parent} onChange={this.changeProp} />
@@ -160,7 +156,7 @@ var AddKid = React.createClass({
     }
 });
 
-//React.render(
-//    <KidsList />,
-//    document.getElementById('app')
-//);
+React.render(
+    <KidsList />,
+    document.getElementById('app')
+);
