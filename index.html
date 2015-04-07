@@ -20,29 +20,22 @@
     <!-- Constants -->
     <script type="text/jsx" src="scripts/constants.js" ></script>
     
-    <!-- The actual app -->
+    <!-- App -->
     <script type="text/jsx" src="scripts/app.js" ></script>
+    
+    <!-- KidsList and children components -->
+    <script type="text/jsx" src="scripts/kidslist.js" ></script>
 </head>
     
 <body>
 
     <div id="app" ></div>
     
-    <div style="display: none" type="text/jsx" >
+    <script type="text/jsx" >
         
     var Router = ReactRouter;
         
     var { Route, DefaultRoute, RouteHandler, Link } = Router;
-    
-    var App = React.createClass({
-        render: function() {
-            return (
-                <div>
-                    <RouteHandler />
-                </div>
-            );
-        }
-    });
         
     var Home = React.createClass({
         render: function() {
@@ -71,7 +64,7 @@
         React.render(<Handler />, document.getElementById('app'));
     });
         
-    </div>
+    </script>
     
 </body>
 </html>

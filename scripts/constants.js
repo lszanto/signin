@@ -1,3 +1,3 @@
 var CONSTANTS = {
-    firebaseURL: ''
+    firebaseURL: 'https://chicagapp.firebaseio.com/kids'
 };
