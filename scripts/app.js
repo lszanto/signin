@@ -30,7 +30,7 @@ var App = React.createClass({
                 <h1>Superb App</h1>
                 {loginMessage}
            
-                <RouteHandler />
+                <RouteHandler loggedIn={this.state.loggedIn} />
             </div>
        );
    }
@@ -40,7 +40,7 @@ var Authentication = {
     statics: {
         willTransitionTo: function(transition) {
             var nextPath = transition.path;
-            if(! this.state.loggedIn) transition.redirect('/login', {}, { 'nextPath': nextPath });
+            //if(! this.props.loggedIn) transition.redirect('/login', {}, { 'nextPath': nextPath });
         }
     }
 };

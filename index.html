@@ -54,6 +54,14 @@
     });
 
     var Secret = React.createClass({
+        mixins: [ Authentication ],
+
+        getInitialState: function() {
+            return {
+                name: 'Luke'
+            };
+        },
+
         render: function() {
             return (
                 <h1>Show some secrets</h1>
