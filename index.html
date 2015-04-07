@@ -45,10 +45,18 @@
         }
     });
         
-    var Dashboard = React.createClass({
+    var Login = React.createClass({
         render: function() {
             return (
-                <h1>Dashboard</h1>
+                <h1>Do some logins</h1>
+            );
+        }
+    });
+
+    var Secret = React.createClass({
+        render: function() {
+            return (
+                <h1>Show some secrets</h1>
             );
         }
     });
@@ -56,7 +64,8 @@
     var routes = (
         <Route handler={App} >
             <DefaultRoute handler={Home} />
-            <Route name="dashboard" handler={Dashboard} />
+            <Route name="login" handler={Login} />
+            <Route name="secret" handler={Secret} />
         </Route>
     );
     

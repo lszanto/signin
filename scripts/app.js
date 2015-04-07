@@ -35,3 +35,12 @@ var App = React.createClass({
        );
    }
 });
+
+var Authentication = {
+    statics: {
+        willTransitionTo: function(transition) {
+            var nextPath = transition.path;
+            if(! this.state.loggedIn) transition.redirect('/login', {}, { 'nextPath': nextPath });
+        }
+    }
+};
