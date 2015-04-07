@@ -44,7 +44,7 @@ var KidsList = React.createClass({
             return <KidComponent key={key} details={kid} onDelete={this.deleteKid} onUpdate={this.updateKid} />;
         }.bind(this));
         
-        if(this.state.kids.length < 1) kidsList = 'No kids yet';
+        if(this.state.kids.length < 1) kidsList = 'No kids yet.';
 
         return (
             <div className="kidsList" >
