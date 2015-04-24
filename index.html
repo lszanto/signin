@@ -36,22 +36,6 @@
     var Router = ReactRouter;
         
     var { Route, DefaultRoute, RouteHandler, Link } = Router;
-        
-    var Home = React.createClass({
-        render: function() {
-            return (
-                <h1>Home</h1>
-            );
-        }
-    });
-        
-    var Login = React.createClass({
-        render: function() {
-            return (
-                <h1>Do some logins</h1>
-            );
-        }
-    });
 
     var Secret = React.createClass({
         mixins: [ Authentication ],
@@ -71,7 +55,7 @@
         
     var routes = (
         <Route handler={App} >
-            <DefaultRoute handler={Home} />
+            <DefaultRoute handler={Login} />
             <Route name="login" handler={Login} />
             <Route name="secret" handler={Secret} />
         </Route>

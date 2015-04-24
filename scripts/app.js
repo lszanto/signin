@@ -23,11 +23,11 @@ var App = React.createClass({
    render: function() {
        var loginMessage = this.state.loggedIn ?
             <h3>Welcome, {this.state.email}</h3> :
-            <h3>Uh oh</h3>;
+            <h3>No loggy</h3>;
        
        return (
             <div className='app' >
-                <h1>Superb App</h1>
+                <h1>Chisignin</h1>
                 {loginMessage}
            
                 <RouteHandler loggedIn={this.state.loggedIn} />
@@ -36,11 +36,51 @@ var App = React.createClass({
    }
 });
 
+var Login = React.createClass({
+    getInitialState: function() {
+        return {
+            username: '',
+            password: ''
+        };
+    },
+
+    changeProp: function(e) {
+        var nState = this.state;
+        nState[e.target.name] = e.target.value;
+        this.setState(nState);
+    },
+
+    doLogin: function() {
+        var fireDataRef = new Firebase(CONSTANTS.firebaseURL);
+        fireDataRef.authWithPassword({ email: this.state.username + '@chicagapp.com', password: this.state.password }, function(error, userData) {
+            console.log(userData, error);
+        });
+    },
+
+    render: function() {
+        return (
+            <div className='loginForm' >
+                <form>
+                    <label htmlFor='username' >Username</label>
+                        <input type='text' placeholder='Username' name='username' id='username' value={this.state.username} onChange={this.changeProp} />
+
+                    <label htmlFor='password' >Password</label>
+                        <input type='password' placeholder='Password' name='password' id='password' value={this.state.password} onChange={this.changeProp} />
+
+                    <button type='button' id='loginButton' onClick={this.doLogin} >Login</button>
+                </form>
+            </div>
+        );
+    }
+});
+
 var Authentication = {
     statics: {
         willTransitionTo: function(transition) {
             var nextPath = transition.path;
-            //if(! this.props.loggedIn) transition.redirect('/login', {}, { 'nextPath': nextPath });
+            var fireDataRef = new Firebase(CONSTANTS.firebaseURL);
+            if(! fireDataRef.getAuth()) transition.redirect('/login', {}, { 'nextPath': nextPath });
+            else console.log(fireDataRef.getAuth());
         }
     }
 };

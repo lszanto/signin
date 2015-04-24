@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 var KidsList = React.createClass({
-    mixins: [ReactFireMixin, CONSTANTS],
+    mixins: [ ReactFireMixin, CONSTANTS, Authentication ],
 
     getInitialState: function() {
         return {
