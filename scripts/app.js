@@ -27,9 +27,6 @@ var App = React.createClass({
        
        return (
             <div className='app' >
-                <h1>Chisignin</h1>
-                {loginMessage}
-           
                 <RouteHandler loggedIn={this.state.loggedIn} />
             </div>
        );

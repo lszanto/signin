@@ -93,7 +93,7 @@ var KidComponent = React.createClass({
                 <input type="text" name="parent" className="parent" placeholder="Parent" value={this.props.details.parent} onChange={this.changeProp} />
                 <input type="text" name="parent_phone" className="parent_phone" placeholder="Parents Phone" value={this.props.details.parent_phone} onChange={this.changeProp} />
                 <input type="text" name="allergies" className="allergies" placeholder="Allergies" value={this.props.details.allergies} onChange={this.changeProp} />
-                <button onClick={this.handleDelete} >Delete</button>
+                <button className="pure-button" onClick={this.handleDelete} >Delete</button>
             </div>
         );
     }
@@ -150,7 +150,7 @@ var AddKid = React.createClass({
                 <input type="text" name="parent" className="parent" placeholder="Parent" value={this.state.parent} onChange={this.changeProp} />
                 <input type="text" name="parent_phone" className="parent_phone" placeholder="Parents Phone" value={this.state.parent_phone} onChange={this.changeProp} />
                 <input type="text" name="allergies" className="allergies" placeholder="Allergies" value={this.state.allergies} onChange={this.changeProp} />
-                <button onClick={this.handleAdd} >Add</button>
+                <button className="pure-button pure-button-primary" onClick={this.handleAdd} >Add</button>
             </div>
         );
     }
