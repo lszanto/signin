@@ -37,10 +37,15 @@ var App = React.createClass({
 });
 
 var Login = React.createClass({
+    contextTypes: {
+        router: React.PropTypes.func
+    },
+
     getInitialState: function() {
         return {
             username: '',
-            password: ''
+            password: '',
+            error: false
         };
     },
 
@@ -51,13 +56,22 @@ var Login = React.createClass({
     },
 
     doLogin: function() {
+        var { router } = this.context;
+        var nextPath = router.getCurrentQuery().nextPath;
         var fireDataRef = new Firebase(CONSTANTS.firebaseURL);
-        fireDataRef.authWithPassword({ email: this.state.username + '@chicagapp.com', password: this.state.password }, function(error, userData) {
-            console.log(userData, error);
-        });
+        fireDataRef.authWithPassword({
+            email: this.state.username + '@chicagapp.com',
+            password: this.state.password },
+            function(error, userData) {
+                if(error) return this.setState({ error: true });
+                if(nextPath) router.replaceWith(nextPath);
+                else router.replaceWith('kidslist');
+            }.bind(this)
+        );
     },
 
     render: function() {
+        var errors = this.state.error ? <p>Bad login information</p> : '';
         return (
             <div className='loginForm' >
                 <form>
@@ -68,6 +82,7 @@ var Login = React.createClass({
                         <input type='password' placeholder='Password' name='password' id='password' value={this.state.password} onChange={this.changeProp} />
 
                     <button type='button' id='loginButton' onClick={this.doLogin} >Login</button>
+                    {errors}
                 </form>
             </div>
         );
@@ -80,7 +95,6 @@ var Authentication = {
             var nextPath = transition.path;
             var fireDataRef = new Firebase(CONSTANTS.firebaseURL);
             if(! fireDataRef.getAuth()) transition.redirect('/login', {}, { 'nextPath': nextPath });
-            else console.log(fireDataRef.getAuth());
         }
     }
 };

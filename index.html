@@ -36,28 +36,11 @@
     var Router = ReactRouter;
         
     var { Route, DefaultRoute, RouteHandler, Link } = Router;
-
-    var Secret = React.createClass({
-        mixins: [ Authentication ],
-
-        getInitialState: function() {
-            return {
-                name: 'Luke'
-            };
-        },
-
-        render: function() {
-            return (
-                <h1>Show some secrets</h1>
-            );
-        }
-    });
         
     var routes = (
         <Route handler={App} >
             <DefaultRoute handler={Login} />
             <Route name="login" handler={Login} />
-            <Route name="secret" handler={Secret} />
             <Route name="kidslist" handler={KidsList} />
         </Route>
     );
